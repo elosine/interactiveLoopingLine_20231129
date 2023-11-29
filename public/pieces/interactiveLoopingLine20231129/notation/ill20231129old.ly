@@ -2,7 +2,7 @@
 
 \paper{
   paper-width = 1200
-  paper-height = 100
+  paper-height = 400
 
   top-margin = 0
   bottom-margin = 0
@@ -11,9 +11,9 @@
   
   system-system-spacing =
   #'((basic-distance . 15)  %this controls space between lines default = 12
-      (minimum-distance . 8)
-      (padding . 1)
-      (stretchability . 60)) 
+                            (minimum-distance . 8)
+                            (padding . 1)
+                            (stretchability . 60)) 
 
 }
 
@@ -39,7 +39,7 @@
       }
 
       {
-        \time 8/4
+        \time 29/4
         \override TupletBracket.bracket-visibility = ##t
         \override TupletNumber.visibility = ##f
         %\once \override TupletNumber #'text = "7:4"
@@ -48,7 +48,7 @@
         \override NoteHead.font-size = #-2
         \override DynamicText.font-size = #-2
         
-       % \override Stem.details.beamed-lengths = #'(7)
+        % \override Stem.details.beamed-lengths = #'(7)
         %\override Stem.details.lengths = #'(7)
         
         
@@ -59,21 +59,27 @@
         % \override NoteColumn.accent-skip = ##t
         
         \override Accidental.font-size = -4 
-       % \stopStaff
-        r4    e'4-^\sf    \tuplet 3/2 {e'8-^\sf e' e'}   e'16 e'e'e'   r8. [e'16]   r8 [e'8]   r8 [e'16 e']     e'16 [e' r8]
-        r4    e'4    \tuplet 3/2 {e'8 e' e'}   e'16 e'e'e'   r8. [e'16]   r8 [e'8]   r8 [e'16 e']     e'16 [e' r8]    
-        e'4 e'e'e'e'e'e'e'
+        % \stopStaff
+        %  r4    e'4-^\sf    \tuplet 3/2 {e'8-^\sf e' e'}   e'16 e'e'e'   r8. [e'16]   r8 [e'8]   r8 [e'16 e']     e'16 [e' r8]
+        %         r4    e'4    \tuplet 3/2 {e'8 e' e'}   e'16 e'e'e'   r8. [e'16]   r8 [e'8]   r8 [e'16 e']     e'16 [e' r8]    
         
+       
+             \override Script.transparent = ##t
+
+        
+        f''16 f''f''f''  % e'4 
+        
+        e'4 e'e'e'e'e'e'e'e'e'e'e'e'e'e'e'e'e'e'e'e' e'e'e'e'e'e'e' %29 Quarters per line
         % Notes Only, No Staff
-        %     \stopStaff
-        %         \override NoteHead.transparent = ##t
-        %         \override NoteHead.no-ledgers = ##t 
-        %         \override Script.transparent = ##t
-        %         \override Stem.transparent = ##t  
-        %         \override TupletBracket.bracket-visibility = ##f
-        %         \override TupletNumber.transparent = ##t
-        %         \override Staff.Clef.transparent =##t
-        %         \override Staff.BarLine.transparent =##t
+        %  \stopStaff
+        %                 \override NoteHead.transparent = ##t
+        %                 \override NoteHead.no-ledgers = ##t 
+        %                 \override Script.transparent = ##t
+        %                 \override Stem.transparent = ##t  
+        %                 \override TupletBracket.bracket-visibility = ##f
+        %                 \override TupletNumber.transparent = ##t
+        %                 \override Staff.Clef.transparent =##t
+        %                 \override Staff.BarLine.transparent =##t
 
         % To Restart Staff After Stopping Staff
         %    \startStaff
@@ -197,8 +203,12 @@
     \layout{
       \context {
         \Score
+        
+        proportionalNotationDuration = #(ly:make-moment 1/29) %smallest space quintuplet or 5*4
+
+        
         %proportionalNotationDuration = #(ly:make-moment 1/20) %smallest space quintuplet or 5*4
-        proportionalNotationDuration = #(ly:make-moment 1/16) %smallest space quintuplet or 5*4
+        %proportionalNotationDuration = #(ly:make-moment 1/16) %smallest space quintuplet or 5*4
 
         %proportionalNotationDuration = #(ly:make-moment 1/28)
         %proportionalNotationDuration = #(ly:make-moment 1/8)
@@ -214,7 +224,7 @@
       indent = 0
       %line-width = 1000
       line-width = 1000
-      #(layout-set-staff-size 100) %staff height
+      #(layout-set-staff-size 200) %staff height
       % \hide Stem
       %\hide NoteHead
       % \hide LedgerLineSpanner

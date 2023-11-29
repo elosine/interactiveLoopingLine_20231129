@@ -77,6 +77,7 @@ function init() {
 
   makeWorldPanel();
   makeStaves();
+  drawNotation();
 
   let ts_Date = new Date(TS.now()); //Date stamp object from TimeSync library
   let tsNowEpochTime_MS = ts_Date.getTime();
@@ -124,7 +125,7 @@ function makeStaves() {
       h: STAFF_H,
       top: ty,
       left: 0,
-      bgClr: clr_blueGrey
+      bgClr: 'white'
     });
 
     tStaffObj['div'] = tDiv;
@@ -135,22 +136,10 @@ function makeStaves() {
       h: STAFF_H,
       x: 0,
       y: 0,
-      clr: clr_blueGrey
+      clr: 'white'
     });
 
     tStaffObj['svg'] = tSvg;
-
-    tStaffObj['rect'] = mkSvgRect({
-      svgContainer: tSvg,
-      x: 0,
-      y: 0,
-      w: STAFF_W,
-      h: STAFF_H,
-      fill: 'black',
-      stroke: 'black',
-      strokeW: 0,
-      roundR: 0
-    });
 
     staves.push(tStaffObj);
 
@@ -158,6 +147,18 @@ function makeStaves() {
 
 } // function makeStaves() END
 //#endef Make Staves
+
+//#ef Draw Notation SVG
+function drawNotation() {
+  let tSvgImage = document.createElementNS(SVG_NS, "image");
+  tSvgImage.setAttributeNS(XLINK_NS, 'xlink:href', '/pieces/interactiveLoopingLine20231129/notationSVGs/quarters.svg');
+  tSvgImage.setAttributeNS(null, "y", 0);
+  tSvgImage.setAttributeNS(null, "x", 0);
+  tSvgImage.setAttributeNS(null, "visibility", 'visible');
+  tSvgImage.setAttributeNS(null, "display", 'yes');
+  staves[0].svg.appendChild(tSvgImage);
+}
+//#endef Draw Notation SVG
 
 
 //#endef BUILD WORLD
