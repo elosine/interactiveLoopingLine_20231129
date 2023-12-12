@@ -729,6 +729,17 @@ let mkSvgLine = function({
   return svgLine;
 }
 
+// Usage Example:
+// let svgLine = mkSvgLine({
+//   svgContainer: bbSet[bbIx].svgCont,
+//   x1: 0,
+//   y1: BB_H - HALF_BB_BOUNCE_WEIGHT,
+//   x2: BB_W,
+//   y2: BB_H - HALF_BB_BOUNCE_WEIGHT,
+//   stroke: 'black',
+//   strokeW: BB_BOUNCE_WEIGHT
+// });
+
 // #endef END mkSvgLine
 
 // #ef mkSvgRect

@@ -50,8 +50,10 @@ const DEVICE_SCREEN_H = window.screen.height;
 const MAX_W = 1200; //16:10 aspect ratio; 0.625
 const MAX_H = 800;
 const WORLD_MARGIN = 10;
-const WORLD_W = Math.min(DEVICE_SCREEN_W, MAX_W) - (WORLD_MARGIN * 2);
-const WORLD_H = Math.min(DEVICE_SCREEN_H, MAX_H) - 45;
+// const WORLD_W = Math.min(DEVICE_SCREEN_W, MAX_W) - (WORLD_MARGIN * 2);
+// const WORLD_H = Math.min(DEVICE_SCREEN_H, MAX_H) - 45;
+const WORLD_W = 1000;
+const WORLD_H = 60;
 const WORLD_CENTER = WORLD_W / 2;
 const GAP = 6;
 //#endef World Panel Variables
@@ -69,6 +71,7 @@ const STAFFGAP = 4;
 const STAFF_H = 100;
 const STAFF_W = NOTATIONCANVAS_W;
 let staves = [];
+let beatLines = [];
 //#endef Staff Variables
 
 
@@ -155,12 +158,32 @@ function makeStaves() {
 //#ef Draw Notation SVG
 function drawNotation() {
   let tSvgImage = document.createElementNS(SVG_NS, "image");
-  tSvgImage.setAttributeNS(XLINK_NS, 'xlink:href', '/pieces/interactiveLoopingLine20231129/notationSVGs/quarters.svg');
-  tSvgImage.setAttributeNS(null, "y", 0);
+  tSvgImage.setAttributeNS(XLINK_NS, 'xlink:href', '/pieces/interactiveLoopingLine20231129/notationSVGs/ill20231129.svg');
+  tSvgImage.setAttributeNS(null, "y", 4);
   tSvgImage.setAttributeNS(null, "x", 0);
   tSvgImage.setAttributeNS(null, "visibility", 'visible');
   tSvgImage.setAttributeNS(null, "display", 'yes');
   staves[0].svg.appendChild(tSvgImage);
+
+  //Beat lines
+  for (var i = 0; i < 29; i++) {
+
+    let tx = i<20 ? 4+(i*34) : 7+(i*34);
+
+
+    let tBl = mkSvgLine({
+      svgContainer: staves[0].svg,
+      x1: tx,
+      y1: 0,
+      x2: tx,
+      y2: WORLD_H,
+      stroke: 'magenta',
+      strokeW: 0.5
+    });
+    beatLines.push(tBl);
+
+  }
+
 }
 //#endef Draw Notation SVG
 
