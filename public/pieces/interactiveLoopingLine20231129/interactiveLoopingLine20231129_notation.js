@@ -1,5 +1,9 @@
 //#ef NOTES
 /*
+Upload coad from pc
+finish line and import to javascript
+measure beats
+put in beat lines
 1200x800
 */
 //#endef NOTES
