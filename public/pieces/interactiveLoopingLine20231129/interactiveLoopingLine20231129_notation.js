@@ -52,8 +52,8 @@ const MAX_H = 800;
 const WORLD_MARGIN = 10;
 // const WORLD_W = Math.min(DEVICE_SCREEN_W, MAX_W) - (WORLD_MARGIN * 2);
 // const WORLD_H = Math.min(DEVICE_SCREEN_H, MAX_H) - 45;
-const WORLD_W = 1000;
-const WORLD_H = 60;
+const WORLD_W = 950;
+const WORLD_H = 450;
 const WORLD_CENTER = WORLD_W / 2;
 const GAP = 6;
 //#endef World Panel Variables
@@ -68,8 +68,9 @@ const NOTATIONCANVAS_W = WORLD_W;
 const NUMSTAVES = 1;
 const STAFFGAP = 4;
 // const STAFF_H = (NOTATIONCANVAS_H - (STAFFGAP * (NUMSTAVES - 1))) / NUMSTAVES;
-const STAFF_H = 100;
+const STAFF_H = 700;
 const STAFF_W = NOTATIONCANVAS_W;
+const LEFT_MARGIN = 3;
 let staves = [];
 let beatLines = [];
 //#endef Staff Variables
@@ -159,16 +160,59 @@ function makeStaves() {
 function drawNotation() {
   let tSvgImage = document.createElementNS(SVG_NS, "image");
   tSvgImage.setAttributeNS(XLINK_NS, 'xlink:href', '/pieces/interactiveLoopingLine20231129/notationSVGs/ill20231129.svg');
-  tSvgImage.setAttributeNS(null, "y", 4);
+  tSvgImage.setAttributeNS(null, "y", 0);
   tSvgImage.setAttributeNS(null, "x", 0);
   tSvgImage.setAttributeNS(null, "visibility", 'visible');
   tSvgImage.setAttributeNS(null, "display", 'yes');
   staves[0].svg.appendChild(tSvgImage);
 
-  //Beat lines
-  for (var i = 0; i < 29; i++) {
+  let tSvgImage2 = document.createElementNS(SVG_NS, "image");
+  tSvgImage2.setAttributeNS(XLINK_NS, 'xlink:href', '/pieces/interactiveLoopingLine20231129/notationSVGs/ill20231129.svg');
+  tSvgImage2.setAttributeNS(null, "y", 130);
+  tSvgImage2.setAttributeNS(null, "x", -943);
+  tSvgImage2.setAttributeNS(null, "visibility", 'visible');
+  tSvgImage2.setAttributeNS(null, "display", 'yes');
+  staves[0].svg.appendChild(tSvgImage2);
 
-    let tx = i<20 ? 4+(i*34) : 7+(i*34);
+  let tSvgImage3 = document.createElementNS(SVG_NS, "image");
+  tSvgImage3.setAttributeNS(XLINK_NS, 'xlink:href', '/pieces/interactiveLoopingLine20231129/notationSVGs/ill20231129.svg');
+  tSvgImage3.setAttributeNS(null, "y", 280);
+  tSvgImage3.setAttributeNS(null, "x", -1886);
+  tSvgImage3.setAttributeNS(null, "visibility", 'visible');
+  tSvgImage3.setAttributeNS(null, "display", 'yes');
+  staves[0].svg.appendChild(tSvgImage3);
+
+
+  //mask
+  let line1Mask = mkSvgRect({
+    svgContainer: staves[0].svg,
+    x: 880,
+    y: 0,
+    w: 75,
+    h: 75,
+    fill: 'white',
+    stroke: 'none',
+    strokeW: 0,
+    roundR: 0
+  });
+
+  let line2Mask = mkSvgRect({
+    svgContainer: staves[0].svg,
+    x: 945,
+    y: 160,
+    w: 75,
+    h: 75,
+    fill: 'white',
+    stroke: 'none',
+    strokeW: 0,
+    roundR: 0
+  });
+
+  //Beat lines 1
+  for (var i = 0; i < 9; i++) {
+
+    // let tx = i<20 ? 4+(i*34) : 7+(i*34);
+    let tx = LEFT_MARGIN + (i * 105)
 
 
     let tBl = mkSvgLine({
@@ -176,7 +220,31 @@ function drawNotation() {
       x1: tx,
       y1: 0,
       x2: tx,
-      y2: WORLD_H,
+      y2: 130,
+      stroke: 'magenta',
+      strokeW: 0.5
+    });
+    beatLines.push(tBl);
+
+
+    let tBl2 = mkSvgLine({
+      svgContainer: staves[0].svg,
+      x1: tx,
+      y1: 150,
+      x2: tx,
+      y2: 255,
+      stroke: 'magenta',
+      strokeW: 0.5
+    });
+    beatLines.push(tBl);
+
+
+    let tBl3 = mkSvgLine({
+      svgContainer: staves[0].svg,
+      x1: tx,
+      y1: 285,
+      x2: tx,
+      y2: 450,
       stroke: 'magenta',
       strokeW: 0.5
     });

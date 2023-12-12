@@ -1,18 +1,13 @@
 \version "2.20.0"
-%All notation in one line
-%Make sure whatever last note has an extra note for full duration
-%Resize in Inkscape to 50px per beat
-%zoom 210%
-
 
 \paper{
-  paper-width = 1450 %50px per beat
+  paper-width = 1000
   paper-height = 100
 
   top-margin = 0
   bottom-margin = 0
-  left-margin = 0
-  right-margin = 0
+  left-margin = 1
+  right-margin = 1
   
   system-system-spacing =
   #'((basic-distance . 15)  %this controls space between lines default = 12
@@ -46,8 +41,6 @@
       {
         \time 29/4
         \override TupletBracket.bracket-visibility = ##t
-                \override TupletBracket.padding = 3
-
         \override TupletNumber.visibility = ##f
         %\once \override TupletNumber #'text = "7:4"
         \set tupletFullLength = ##t %http://lilypond.org/doc/v2.19/Documentation/snippets/rhythms
@@ -65,8 +58,6 @@
         % \override NoteColumn.accent-skip = ##t
         
         \override Accidental.font-size = -4 
-        \override Stem.direction = #up
-        
         \stopStaff
         
         
@@ -244,13 +235,13 @@
       \context {
         \Score
         %proportionalNotationDuration = #(ly:make-moment 1/20) %smallest space quintuplet or 5*4
-        proportionalNotationDuration = #(ly:make-moment 1/35) 
+        proportionalNotationDuration = #(ly:make-moment 1/29) 
 
 
         %proportionalNotationDuration = #(ly:make-moment 1/28)
         %proportionalNotationDuration = #(ly:make-moment 1/8)
         \override SpacingSpanner.uniform-stretching = ##t
-         \override SpacingSpanner.strict-note-spacing = ##t
+        %  \override SpacingSpanner.strict-note-spacing = ##t
         %  \override SpacingSpanner.strict-grace-spacing = ##t
         \override Beam.breakable = ##t
         \override Glissando.breakable = ##t
@@ -260,7 +251,7 @@
 
       indent = 0
       %line-width = 158
-      line-width = 1450 %50px per beat
+      line-width = 1000
       #(layout-set-staff-size 33) %staff height
       % \hide Stem
       %\hide NoteHead

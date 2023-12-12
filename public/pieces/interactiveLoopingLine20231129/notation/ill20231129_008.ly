@@ -1,12 +1,7 @@
 \version "2.20.0"
-%All notation in one line
-%Make sure whatever last note has an extra note for full duration
-%Resize in Inkscape to 50px per beat
-%zoom 210%
-
 
 \paper{
-  paper-width = 1450 %50px per beat
+  paper-width = 1000
   paper-height = 100
 
   top-margin = 0
@@ -65,8 +60,6 @@
         % \override NoteColumn.accent-skip = ##t
         
         \override Accidental.font-size = -4 
-        \override Stem.direction = #up
-        
         \stopStaff
         
         
@@ -244,7 +237,7 @@
       \context {
         \Score
         %proportionalNotationDuration = #(ly:make-moment 1/20) %smallest space quintuplet or 5*4
-        proportionalNotationDuration = #(ly:make-moment 1/35) 
+        proportionalNotationDuration = #(ly:make-moment 1/33) 
 
 
         %proportionalNotationDuration = #(ly:make-moment 1/28)
@@ -260,7 +253,7 @@
 
       indent = 0
       %line-width = 158
-      line-width = 1450 %50px per beat
+      line-width = 1000
       #(layout-set-staff-size 33) %staff height
       % \hide Stem
       %\hide NoteHead
