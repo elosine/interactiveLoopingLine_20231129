@@ -43,7 +43,7 @@
         \override TupletBracket.bracket-visibility = ##t
         \override TupletNumber.visibility = ##f
         %\once \override TupletNumber #'text = "7:4"
-        %\set tupletFullLength = ##t %http://lilypond.org/doc/v2.19/Documentation/snippets/rhythms
+        \set tupletFullLength = ##t %http://lilypond.org/doc/v2.19/Documentation/snippets/rhythms
         
         \override NoteHead.font-size = #-2
         \override DynamicText.font-size = #-2
@@ -62,19 +62,36 @@
         
         
         
+        \set Score.tempoHideNote = ##t
+        \tempo 4 = 60
         
+        %Fix all tuplets number partials per beat
         
         [f''16 e'8.~] e'4
-        \tuplet 5/4 {b c' a' g'' a''~} a''8 
+        \tuplet 5/4 {b16 c' a' g'' a''~} a''8 
         c''2 c2. r8
         b''8 d'8  f'''16 e'' e' f
         \tuplet 5/4 {c' c' c' c' c'~} c'16 c'''8.  b,1
-        r2
+  
         \tuplet 3/4 {e'4 a8}
         
         \once \override TupletNumber.text =
-           #(tuplet-number::non-default-tuplet-fraction-text 5 2)
+        #(tuplet-number::non-default-tuplet-fraction-text 5 2)
+        
         \tuplet 5/4 {g''8 b' c' g'' c'}
+        
+        \tuplet 3/4 {a'4 d'8}
+        \once \override TupletNumber #'text = "5:2"
+        \tuplet 5/4 {c'''8 f'' g' d''' g'}
+        
+        
+        f'16 a' d' f''
+        \once \override TupletNumber #'text = "7:1"
+
+        \tuplet 7/8 {a'32 c'' e'' g'' b'' d''' a'''}
+
+        c,,1.
+
         
         
         
